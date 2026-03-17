@@ -33,19 +33,21 @@ function TodoFeature() {
         const newTodo = {
             id: Math.max(...todoList.map(t => t.id), 0) + 1,
             title: inputValue,
+            status: 'new',
         };
 
         setTodoList([...todoList, newTodo]);
         setInputValue('');
     };
-     const handleTodoClick=(todo, idx)=>{
+     const handleTodoClick=(todo)=>{
         //clone current array to do the new one
         const newTodoList=[...todoList];
-        console.log(todo, idx);
+        const index = newTodoList.findIndex(t => t.id === todo.id);
+        console.log(todo, index);
         //toggle state
-        newTodoList[idx]={
-            ...newTodoList[idx],
-            status:newTodoList[idx].status==='new'?'completed':'new',
+        newTodoList[index]={
+            ...newTodoList[index],
+            status:newTodoList[index].status==='new'?'completed':'new',
         };
         //update todo list
         setTodoList(newTodoList);
