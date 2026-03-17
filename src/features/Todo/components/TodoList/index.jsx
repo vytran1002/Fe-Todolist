@@ -5,14 +5,22 @@ import './style.scss';
 
 TodoList.propTypes = {
     todoList: PropTypes.array,
+    onTodoList: PropTypes.func,
     onDeleteTodo: PropTypes.func,
 };
 TodoList.defaultProps = {
     todoList: [],
+    onTodoClick: null,
     onDeleteTodo: null,
 };
 
-function TodoList({todoList, onDeleteTodo}) {
+function TodoList({todoList, onTodoClick, onDeleteTodo}) {
+    const handleTodoClick = (todo) => {
+        if (onTodoClick) {
+            onTodoClick(todo);
+        }
+    };
+
     return (
         <div className="todo-list">
             <ul>
@@ -20,6 +28,8 @@ function TodoList({todoList, onDeleteTodo}) {
                     <TodoItem 
                         key={todo.id} 
                         todo={todo}
+                        status={todo.status}
+                        onClick={handleTodoClick}
                         onDelete={onDeleteTodo}
                     />
                 ))}

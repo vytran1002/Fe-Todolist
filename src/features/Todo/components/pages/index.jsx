@@ -10,15 +10,18 @@ function TodoFeature() {
     const [todoList, setTodoList] = useState([
         {
             id: 1,
-            title: 'Một'
+            title: 'Một',
+            status: 'new'
         },
         {
             id: 2,
-            title: 'Hai'
+            title: 'Hai',
+            status: 'completed'
         },
         {
             id: 3,
-            title: 'Ba'
+            title: 'Ba',
+            status: 'new'
         },
     ]);
 
@@ -35,6 +38,19 @@ function TodoFeature() {
         setTodoList([...todoList, newTodo]);
         setInputValue('');
     };
+     const handleTodoClick=(todo, idx)=>{
+        //clone current array to do the new one
+        const newTodoList=[...todoList];
+        console.log(todo, idx);
+        //toggle state
+        newTodoList[idx]={
+            ...newTodoList[idx],
+            status:newTodoList[idx].status==='new'?'completed':'new',
+        };
+        //update todo list
+        setTodoList(newTodoList);
+    }
+
 
     const handleDeleteTodo = (id) => {
         setTodoList(todoList.filter(todo => todo.id !== id));
@@ -65,6 +81,7 @@ function TodoFeature() {
             {/* Truyền data từ cha xuống con thông qua todoList */}
             <TodoList 
                 todoList={todoList}
+                onTodoClick={handleTodoClick}
                 onDeleteTodo={handleDeleteTodo}
             />
         </div>
