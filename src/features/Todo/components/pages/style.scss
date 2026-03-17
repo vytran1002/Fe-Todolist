@@ -1,0 +1,58 @@
+.todo-feature {
+    padding: 32px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+
+    h3 {
+        color: var(--text-h);
+        margin-bottom: 24px;
+        font-size: 24px;
+    }
+
+    .input-group {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 24px;
+
+        .input-todo {
+            flex: 1;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            color: var(--text-h);
+            background: var(--bg);
+            transition: all 0.3s ease;
+
+            &:focus {
+                outline: none;
+                border-color: var(--accent);
+                box-shadow: 0 0 0 3px var(--accent-bg);
+            }
+
+            &::placeholder {
+                color: var(--text);
+            }
+        }
+
+        .btn-add {
+            padding: 10px 24px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+                opacity: 0.9;
+            }
+
+            &:active {
+                opacity: 0.8;
+            }
+        }
+    }
+}
