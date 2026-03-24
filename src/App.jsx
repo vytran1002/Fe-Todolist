@@ -8,13 +8,18 @@ function App() {
   return (
     <div className="App">
       {/* <TodoFeature /> */}
-            Home Page
-      <p><Link to="/todos">Todos</Link></p>
-      <p><Link to="/boxcolor">BoxColor</Link></p>
-      <p><Link to="/counter">Counter</Link></p>
-    <hr></hr>
-
-      {/* <nav>
+      Home Page
+      <p>
+        <Link to="/todos">Todos</Link>
+      </p>
+      <p>
+        <Link to="/boxcolor">BoxColor</Link>
+      </p>
+      <p>
+        <Link to="/counter">Counter</Link>
+      </p>
+      <hr></hr>
+      <nav>
         <p>
           <NavLink to="/todos" activeClassName="active-menu">
             Todos
@@ -25,13 +30,21 @@ function App() {
             BoxColor
           </NavLink>
         </p>
-      </nav> */}
-
+      </nav>
+      <Link to="/todos">Home</Link>
+      <Link to="/about">About</Link>
       <Routes>
-        <Route path="/" element={<TodoFeature/>} />
+        {/* <Route path="*" element={<Navigate replace to="/" />} /> */}
+        {/* <Route path="*" element={<Navigate replace to="/counter" />} /> */}
+        <Route
+          path="/post-list/:postId"
+          element={<Navigate replace to="/posts/:postId" exact />}
+        />
+        <Route path="/" element={<TodoFeature />} />
         <Route path="/todos" element={<TodoFeature />} />
         <Route path="/boxcolor" element={<BoxColor />} />
         <Route path="/counter" element={<Counter />} />
+        {/* <Route path="/:id" children={<Child />} /> */}
       </Routes>
     </div>
   );
